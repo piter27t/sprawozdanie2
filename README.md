@@ -16,7 +16,7 @@ Aby uruchomić kontener o nazwie alpine4 na bazie zbudowanego obrazu lab4docker 
 ### 5
 Aby potwierdzić, że skrypt pluto.sh generuje wymagane dane i umieszcza je w pliku info.log na wolumenie wykonałem nastepujące polecenie:
 ```docker volume inspect LocalVol```
-Następnie skopiowałem ścieżkę montowania którą otrzymałem przez wykonanie powyższej komendy i wykonałem polecenie wykorzystując skopiowaną ścieżkę:
+Następnie skopiowałem ścieżkę montowania którą otrzymałem przez wykonanie powyższej komendy i wykonałem polecenie wykorzystując skopiowaną ścieżkę dopisując do niej plik info.log:
 ```cat /var/lib/docker/volumes/LocalVol/_data/info.log```
 Po wykonaniu tego polecenia została wyświetlona zawartość pliku info.log.
 Aby sprawdzić czy plik znajduje się w katalogu /logi stworzyłem kolejny kontener na bazie obrazu alpine z opcją uruchomienia konsoli i podłaczenia pod istniejący wolumen LocalVol poprzez polecenie
