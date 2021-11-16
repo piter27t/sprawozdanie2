@@ -19,8 +19,8 @@ Aby potwierdzić, że skrypt pluto.sh generuje wymagane dane i umieszcza je w pl
 Następnie skopiowałem ścieżkę montowania którą otrzymałem przez wykonanie powyższej komendy i wykonałem polecenie wykorzystując skopiowaną ścieżkę dopisując do niej plik info.log:
 ```cat /var/lib/docker/volumes/LocalVol/_data/info.log```
 Po wykonaniu tego polecenia została wyświetlona zawartość pliku info.log.
-Aby sprawdzić czy plik znajduje się w katalogu /logi stworzyłem kolejny kontener na bazie obrazu alpine z opcją uruchomienia konsoli i podłaczenia pod istniejący wolumen LocalVol poprzez polecenie
-```docker run -it --name alpine --memory=512m --mount source=LocalVol,target=/logi alpine``` Następnie będąc w konsoli użyłem polecenia ```cat /logi/info.log``` które zwróciło zawartość pliku info.log udowadniając, że plik znajduje sie w katalogu /logi.
+
+Aby sprawdzić czy plik znajduje się w katalogu /logi dodałem do skryptu pluto.sh następującą linijkę ```echo $(cat /logi/info.log)``` Następnie buduję obraz i kontener przy wykorzystaniu poleceń podanych wyżej i jako wynik na konsoli otrzymuję zawartość pliku info.log co dowodzi że plik o takiej ścieżce istnieje.
 
 Aby potwierdzić, że kontener alpine4 ma ograniczoną ilość pamięci RAM wykonałem polecenie ```docker inspect alpine4```
 Jedną ze zwróconych linijek była linijka: "Memory": 536870912 co po podzieleniu tej wartości dwa razy przez 1024 dało 512MB co potwierdza założenia zadania.
